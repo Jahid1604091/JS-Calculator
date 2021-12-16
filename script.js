@@ -38,6 +38,7 @@ for (let i = 0; i < operators.length; i++) {
     if(e.target.id == 'backspace'){
       let output = reverseNumberFormat(getOutput()).toString()
       if(output){
+          //let text =  'hello' -> text.substring(0,4) = hell
           output = output.substring(0,output.length - 1)
           printOutput(output)
       }
@@ -46,13 +47,13 @@ for (let i = 0; i < operators.length; i++) {
     else{
         let output=getOutput();
         let history=getHistory();
-        if(output==""&&history!=""){
+        if(output=="" && history!=""){
             if(isNaN(history[history.length-1])){
                 history= history.substring(0,history.length-1);
             }
         }
         if(output!="" || history!=""){
-            output= output==""?output:reverseNumberFormat(output);
+            output = output==""?output:reverseNumberFormat(output);
             history=history+output;
             if(e.target.id=="="){
                 let result=eval(history);
@@ -76,9 +77,9 @@ const numbers = document.getElementsByClassName('number')
 for (let i = 0; i < numbers.length; i++) {
     numbers[i].addEventListener('click',(e)=>{
         let output = reverseNumberFormat(getOutput())
-        console.log(output)
+       
         if(output!=NaN){
-            output += e.target.id
+            output += e.target.innerText
             printOutput(output)
         }
    })
